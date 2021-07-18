@@ -3,7 +3,15 @@
  Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
 -->
 <config xmlns="http://www.hybris.com/cockpit/config"
-	xmlns:na="http://www.hybris.com/cockpitng/config/notifications">
+		xmlns:na="http://www.hybris.com/cockpitng/config/notifications"
+		xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea"
+		xmlns:simple-search="http://www.hybris.com/cockpitng/config/simplesearch"
+		xmlns:advanced-search="http://www.hybris.com/cockpitng/config/advancedsearch"
+		xmlns:explorer-tree="http://www.hybris.com/cockpitng/config/explorertree"
+		xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config"
+		xmlns:list-view="http://www.hybris.com/cockpitng/component/listView"
+		xmlns:df="http://www.hybris.com/cockpitng/component/dynamicForms"
+		xmlns:y="http://www.hybris.com/cockpit/config/hybris">
 
 	<context merge-by="module" component="editorareaactions" type="Consignment">
 		<y:actions xmlns:y="http://www.hybris.com/cockpit/config/hybris">
@@ -22,5 +30,336 @@
 	        </na:notifications>
 	   </na:notification-area>
 	</context>
+
+	<!-- Tree node-->
+	<context merge-by="module"  type="trainingbackoffice" component="explorer-tree">
+		<explorer-tree:explorer-tree>
+			<explorer-tree:navigation-node id="Rent_Vehicle" merge-mode="append">
+				<explorer-tree:type-node  code="Vehicle" id="Vehicle" />
+				<explorer-tree:type-node  code="Driver" id="Driver" />
+				<explorer-tree:type-node  code="Dealer" id="Dealer" />
+			</explorer-tree:navigation-node>
+		</explorer-tree:explorer-tree>
+	</context>
+
+
+	<!-- Vehicle -->
+
+	<context merge-by="type" type="Vehicle" component="editor-area">
+		<editorArea:editorArea>
+			<editorArea:essentials>
+				<editorArea:essentialSection  name="hmc.section.vehicle.attributes">
+					<editorArea:attribute qualifier="registrationNumber" />
+					<editorArea:attribute qualifier="catalogVersion" />
+					<editorArea:attribute qualifier="code" />
+					<editorArea:attribute qualifier="approvalStatus" />
+					<editorArea:attribute qualifier="name" />
+				</editorArea:essentialSection >
+			</editorArea:essentials>
+		</editorArea:editorArea>
+	</context>
+
+
+	<context merge-by="type"  type="Vehicle" component="editor-area">
+		<editorArea:editorArea>
+			<editorArea:tab name="hmc.tab.vehicle.relation"
+							position="4">
+				<editorArea:section name="hmc.section.vehicle.relation">
+					<editorArea:attribute qualifier="dealers" />
+					<editorArea:attribute qualifier="driver" />
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
+	</context>
+
+	<context type="Vehicle"   component="configurableFlowDynamicForms" merge-by="module">
+		<df:dynamicForms modelProperty="newVehicle">
+			<df:attribute id="vehicle.wizard.dynamic" disabledIf="(registrationNumber == null)" qualifier="catalogVersion" triggeredOn="registrationNumber" />
+		</df:dynamicForms>
+	</context>
+
+	<context type="Vehicle" component="editorAreaDynamicForms" merge-by="module">
+		<df:dynamicForms xmlns:df="http://www.hybris.com/cockpitng/component/dynamicForms">
+			<df:attribute id="vehicle.dynamic" qualifier="description" triggeredOn="name" computedValue="'I love ' + name[new java.util.Locale('en')] + ' soooooo much! '"/>
+		</df:dynamicForms>
+	</context>
+
+	<context type="Vehicle" component="base" merge-by="type" parent="GenericItem">
+		<y:base>
+			<y:labels>
+				<y:label>registrationNumber+ '-' +catalogVersion</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context merge-by="type"  type="Vehicle" component="simple-search">
+		<simple-search:simple-search>
+			<simple-search:field name="registrationNumber" />
+			<simple-search:field name="code" />
+		</simple-search:simple-search>
+	</context>
+
+	<context merge-by="type" parent="GenericItem" type="Vehicle" component="advanced-search">
+		<advanced-search:advanced-search>
+			<advanced-search:field-list>
+				<advanced-search:field name="registrationNumber" selected="true" operator="equals" />
+			</advanced-search:field-list>
+		</advanced-search:advanced-search>
+	</context>
+
+	<context  type="Vehicle" Parent="Product" component="create-wizard">
+		<wz:flow  id="VehicleWizard" title="create.vehicle.title">
+			<wz:prepare id="VehiclePrepare">
+				<wz:initialize property="newVehicle" type="ctx.TYPE_CODE"/>
+			</wz:prepare>
+			<wz:step id="step1" label="create.vehicle.essential.label" sublabel="create.vehicle.essential.sublabel">
+				<wz:info id="step1.intro" label="create.vehicle.essential.intro" position="top"/>
+				<wz:content id="step1.content">
+					<wz:property-list root="newVehicle">
+						<wz:property qualifier="registrationNumber" type="java.lang.String"/>
+						<wz:property qualifier="code"  />
+						<wz:property qualifier="approvalStatus" />
+						<wz:property qualifier="catalogVersion"  />
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel/>
+					<wz:next visible = "(newVehicle.code != null) and (newVehicle.registrationNumber != null) and (newVehicle.catalogVersion != null)" />
+					<wz:done visible= "(newVehicle.code != null) and (newVehicle.registrationNumber != null) and (newVehicle.catalogVersion != null) ">
+						<wz:save property="newVehicle"/>
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<context merge-by="type" parent="GenericItem" type="Vehicle" component="listview">
+		<list-view:list-view >
+			<list-view:column qualifier="code" />
+			<list-view:column qualifier="registrationNumber" />
+			<list-view:column qualifier="catalogVersion" />
+		</list-view:list-view>
+	</context>
+
+
+<!-- Dealer -->
+
+	<context merge-by="type" type="Dealer" component="editor-area">
+	<editorArea:editorArea>
+		<editorArea:essentials>
+		<editorArea:essentialSection  name="dealer.tab.section.essential">
+			<editorArea:attribute qualifier="dealerId" />
+			<editorArea:attribute qualifier="dealerName" />
+		</editorArea:essentialSection >
+		</editorArea:essentials>
+	</editorArea:editorArea>
+	</context>
+
+	<context merge-by="type" type="Dealer" component="editor-area">
+		<editorArea:editorArea>
+			<editorArea:tab name="dealer.tab.essential"
+							position="1">
+			</editorArea:tab>
+			<editorArea:tab name="dealer.tab.relation"
+							position="2">
+				<editorArea:section name="dealer.tab.section.attributes">
+					<editorArea:attribute qualifier="vehicles" />
+					<editorArea:attribute qualifier="drivers" />
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
+	</context>
+
+	<context type="Dealer" component="editorAreaDynamicForms" merge-by="module">
+		<df:dynamicForms >
+			<df:tab id="dealer.tab.dynamic" triggeredOn="dealerName" qualifier="dealer.tab.relation" visibleIf="(dealerName != null)" />
+			<df:tab id="dealer.tab.switch" triggeredOn="dealerName" qualifier="dealerName" gotoTabIf= "(dealerName != null)" gotoTabId="dealer.tab.relation"  />
+		</df:dynamicForms>
+	</context>
+
+	<context type="Dealer"  component="configurableFlowDynamicForms" merge-by="module">
+		<df:dynamicForms modelProperty="newDealer">
+			<df:attribute id="dealer.wizard.dynamic" disabledIf="(dealerId == null)" qualifier="dealerName" triggeredOn="dealerId" />
+		</df:dynamicForms>
+	</context>
+
+	<context type="Dealer" component="base" merge-by="type" parent="GenericItem">
+		<y:base>
+			<y:labels>
+				<y:label>dealerId+ '-' +dealerName</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context merge-by="type"  type="Dealer" component="simple-search">
+		<simple-search:simple-search>
+			<simple-search:field name="dealerName" />
+			<simple-search:field name="dealerId" />
+		</simple-search:simple-search>
+	</context>
+
+	<context merge-by="type" parent="GenericItem"  type="Dealer" component="advanced-search">
+		<advanced-search:advanced-search>
+			<advanced-search:field-list>
+				<advanced-search:field name="dealerId" selected="true" operator="equals" />
+				<advanced-search:field name="dealerName" selected="true" operator="equals" />
+			</advanced-search:field-list>
+		</advanced-search:advanced-search>
+	</context>
+
+	<context  type="Dealer" component="create-wizard">
+		<wz:flow  id="DealerWizard" title="create.dealer.title">
+			<wz:prepare id="DealerPrepare">
+				<wz:initialize property="newDealer" type="ctx.TYPE_CODE"/>
+			</wz:prepare>
+			<wz:step id="step1" label="create.dealer.essential.label" sublabel="create.dealer.essential.sublabel">
+				<wz:info id="step1.intro" label="create.dealer.essential.intro" position="top"/>
+				<wz:content id="step1.content">
+					<wz:property-list root="newDealer">
+						<wz:property qualifier="dealerId" type="java.lang.String"/>
+						<wz:property qualifier="dealerName" type="java.lang.String"/>
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel/>
+					<wz:next visible = "((newDealer.dealerId != null)and(newDealer.dealerName != null))" />
+					<wz:done visible= "((newDealer.dealerId != null)and(newDealer.dealerName != null))">
+						<wz:save property="newDealer"/>
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step2" label="create.dealer.contact.label" sublabel="create.dealer.contact.sublabel">
+				<wz:info id="step1.intro" label="create.dealer.contact.intro" position="top"/>
+				<wz:content id="step2.content">
+					<wz:property-list root="newDealer">
+						<wz:property qualifier="dealerAddress" type="Address"/>
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step2.navigation">
+					<wz:cancel/>
+					<wz:next />
+					<wz:done >
+						<wz:save property="newDealer"/>
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<!-- Driver -->
+
+	<context merge-by="type" parent="GenericItem" type="Dealer" component="listview">
+		<list-view:list-view >
+			<list-view:column qualifier="dealerId" />
+			<list-view:column qualifier="dealerName" />
+		</list-view:list-view>
+	</context>
+
+	<context merge-by="type" type="Driver" component="editor-area">
+		<editorArea:editorArea>
+			<editorArea:essentials>
+				<editorArea:essentialSection  name="driver.tab.section.essential">
+					<editorArea:attribute qualifier="driverId" />
+					<editorArea:attribute qualifier="driverName" />
+				</editorArea:essentialSection >
+			</editorArea:essentials>
+		</editorArea:editorArea>
+	</context>
+
+	<context merge-by="type"   type="Driver" component="editor-area">
+		<editorArea:editorArea>
+			<editorArea:tab  name="driver.tab.essential"
+							position="1">
+			</editorArea:tab>
+			<editorArea:tab name="driver.tab.relation"
+							position="2">
+				<editorArea:section name="driver.tab.section.attributes">
+					<editorArea:attribute qualifier="vehicles" />
+					<editorArea:attribute qualifier="dealers" />
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
+	</context>
+
+
+	<context type="Driver"  component="configurableFlowDynamicForms" merge-by="module">
+		<df:dynamicForms modelProperty="newDriver">
+			<df:attribute id="driver.wizard.dynamic" disabledIf="(driverId == null)" qualifier="driverName" triggeredOn="driverId" />
+		</df:dynamicForms>
+	</context>
+
+	<context type="Driver" component="base" merge-by="type" parent="GenericItem">
+		<y:base>
+			<y:labels>
+				<y:label>driverId+ '-' +driverName</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context merge-by="type"  type="Driver" component="simple-search">
+		<simple-search:simple-search>
+			<simple-search:field name="driverName" />
+			<simple-search:field name="driverId" />
+		</simple-search:simple-search>
+	</context>
+
+	<context merge-by="type"  parent="GenericItem"  type="Driver" component="advanced-search">
+		<advanced-search:advanced-search>
+			<advanced-search:field-list>
+				<advanced-search:field name="driverId" selected="true" operator="equals" />
+				<advanced-search:field name="driverName" selected="true" operator="equals"/>
+				<advanced-search:field name="experience" selected="true" operator="equals" />
+			</advanced-search:field-list>
+		</advanced-search:advanced-search>
+	</context>
+
+	<context type="Driver" component="create-wizard">
+		<wz:flow  id="DriverWizard" title="create.driver.title">
+			<wz:prepare id="DriverPrepare">
+				<wz:initialize property="newDriver" type="ctx.TYPE_CODE"/>
+			</wz:prepare>
+			<wz:step id="step1" label="create.driver.essential.label" sublabel="create.driver.essential.sublabel">
+				<wz:info id="step1.intro" label="create.driver.essential.intro" position="top"/>
+				<wz:content id="step1.content">
+					<wz:property-list root="newDriver">
+						<wz:property qualifier="driverId" type="java.lang.String"/>
+						<wz:property qualifier="driverName" type="java.lang.String"/>
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel/>
+					<wz:next visible = "((newDriver.driverId != null)and(newDriver.driverName != null))" />
+					<wz:done visible= "((newDriver.driverId != null)and(newDriver.driverName != null))">
+						<wz:save property="newDriver"/>
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step2" label="create.driver.background.label" sublabel="create.driver.background.sublabel">
+				<wz:info id="step1.intro" label="create.driver.background.intro" position="top"/>
+				<wz:content id="step2.content">
+					<wz:property-list root="newDriver">
+						<wz:property qualifier="experience" type="java.lang.Integer"/>
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step2.navigation">
+					<wz:cancel/>
+					<wz:next />
+					<wz:done >
+						<wz:save property="newDriver"/>
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<context merge-by="type" parent="GenericItem" type="Driver" component="listview">
+		<list-view:list-view >
+			<list-view:column qualifier="driverId" />
+			<list-view:column qualifier="driverName" />
+			<list-view:column qualifier="experience" />
+		</list-view:list-view>
+	</context>
+
+
 
 </config>
