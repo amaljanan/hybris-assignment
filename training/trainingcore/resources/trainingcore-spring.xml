@@ -538,4 +538,17 @@
 		<property name="itemCleanupHooks" ref="csTicketRetentionHooks"/>
 		<property name="ticketBusinessService" ref="ticketBusinessService"/>
 	</bean>
+
+	<!-- My custom cronJob -->
+	<bean id="productListResultDao" class = "de.hybris.training.core.dao.impl.ProductListResultDaoImpl" parent="defaultProductDao">
+	</bean>
+
+	<bean id="productListJobPerformable" class = "de.hybris.training.core.job.ProductListJobPerformable"
+		parent="abstractJobPerformable">
+	</bean>
+
+	<bean id="abortableCronJobExample" class = "de.hybris.training.core.job.AbortableCronJobExample"
+		  parent="abstractJobPerformable">
+	</bean>
+
 </beans>
