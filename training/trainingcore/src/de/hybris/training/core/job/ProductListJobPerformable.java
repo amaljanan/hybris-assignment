@@ -8,7 +8,7 @@ import de.hybris.platform.servicelayer.cronjob.AbstractJobPerformable;
 import de.hybris.platform.servicelayer.cronjob.PerformResult;
 import de.hybris.platform.servicelayer.search.SearchResult;
 import de.hybris.training.core.dao.ProductListResultDao;
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 
 import java.util.logging.Logger;

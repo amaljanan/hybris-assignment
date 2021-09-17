@@ -11,11 +11,13 @@ import de.hybris.platform.servicelayer.dto.converter.ConversionException;
 import de.hybris.platform.servicelayer.dto.converter.Converter;
 import de.hybris.platform.variants.model.VariantProductModel;
 import de.hybris.training.core.model.ApparelProductModel;
+import de.hybris.training.core.model.VehicleModel;
 import de.hybris.training.facades.product.data.GenderData;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hybris.training.facades.product.data.VehicleData;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Required;
 
@@ -56,6 +58,7 @@ public class ApparelProductPopulator implements Populator<ProductModel, ProductD
 				target.setGenders(genders);
 			}
 		}
+
 	}
 
 	protected ProductModel getBaseProduct(final ProductModel productModel)

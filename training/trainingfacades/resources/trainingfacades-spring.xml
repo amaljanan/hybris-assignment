@@ -182,4 +182,11 @@
 	</bean>
 
 	<bean id="genderData" class="de.hybris.training.facades.product.data.GenderData" scope="prototype"/>
+
+	<alias name="vehiclePopulator" alias="commerceSearchResultProductPopulator"/>
+	<bean id="vehiclePopulator"
+		  class="de.hybris.training.facades.populators.VehiclePopulator"
+		  parent="variantCommerceSearchResultProductPopulator">
+	</bean>
+
 </beans>

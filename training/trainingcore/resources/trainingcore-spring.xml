@@ -551,4 +551,16 @@
 		  parent="abstractJobPerformable">
 	</bean>
 
+	<bean id="vehicleRegistrationNumberProvider" class = "de.hybris.training.core.search.solrfacetsearch.provider.impl.VehicleRegistrationNumberProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
+	</bean>
+
+	<bean id="dealerNameProvider" class = "de.hybris.training.core.search.solrfacetsearch.provider.impl.DealerNameProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
+	</bean>
+
+	<bean id="driverNameProvider" class = "de.hybris.training.core.search.solrfacetsearch.provider.impl.DriverNameProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
+	</bean>
+
 </beans>

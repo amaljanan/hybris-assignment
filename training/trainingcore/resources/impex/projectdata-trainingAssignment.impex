@@ -23,13 +23,13 @@ INSERT_UPDATE Dealer; dealerId[unique=true,allownull=false];dealername
 ;12;Bounce
 
 # Insert Dealer To Driver and Dealer to Vehicle Relation
-UPDATE Dealer; dealerId[unique=true,allownull=false];drivers(driverId);vehicles(registrationNumber)
+INSERT_UPDATE Dealer; dealerId[unique=true,allownull=false];drivers(driverId);vehicles(registrationNumber)
 ;10;10;KL 10A 6717
 ;11;11;KL 59P 2288
 ;12;12;KL 07 007
 
 # Insert Driver To Vehicle Relation
-UPDATE Driver; driverId[unique=true,allownull=false];vehicles(registrationNumber)
+INSERT_UPDATE Driver; driverId[unique=true,allownull=false];vehicles(registrationNumber)
 ;10;KL 10A 6717
 ;11;KL 59P 2288
 ;12;KL 07 007

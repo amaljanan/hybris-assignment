@@ -6,10 +6,18 @@
 
 	<bean class="de.hybris.platform.commercefacades.product.data.ProductData">
 		<property name="genders" type="java.util.List&lt;de.hybris.training.facades.product.data.GenderData>"/>
+		<property name="registrationNumber" type="String"/>
+		<property name="dealerName" type="String" />
+		<property name="driverName" type="String" />
 	</bean>
 
 	<bean class="de.hybris.training.facades.product.data.GenderData">
 		<property name="code" type="String"/>
 		<property name="name" type="String"/>
 	</bean>
+	<bean class="de.hybris.training.facades.product.data.VehicleData">
+		<property name="registrationNumber" type="String"/>
+		<property name="code" type="String"/>
+	</bean>
+	
 </beans>

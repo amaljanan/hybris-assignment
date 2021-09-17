@@ -38,10 +38,40 @@
 					</c:forEach>
 				</div>
 			</c:if>
-			
+
+			<ycommerce:testId code="product_registerNumber">
+			                </br>
+            				<a class="name" href="">
+            					<c:out escapeXml="false" value="Reg No: ${product.registrationNumber}" />
+            				</a>
+            </ycommerce:testId>
+
+            <ycommerce:testId code="product_dealerName">
+            			                </br>
+                        				<a class="name" href="">
+                        					<c:out escapeXml="false" value="Dealer Name: ${product.dealerName}" />
+                        				</a>
+             </ycommerce:testId>
+
+             <ycommerce:testId code="product_driverName">
+                     </br>
+                     <c:choose>
+                       <c:when test="${empty product.driverName }">
+                         Driver not available
+                       </c:when>
+                       <c:otherwise>
+                               <a class="name" href="">
+                                    <c:out escapeXml="false" value="Driver Name: ${product.driverName}" />
+                               </a>
+                       </c:otherwise>
+                     </c:choose>
+              </ycommerce:testId>
+
+
 			<ycommerce:testId code="product_productPrice">
 				<div class="price"><product:productListerItemPrice product="${product}"/></div>
 			</ycommerce:testId>
+			<h1>${vehicle.code}</h1>
 			<c:forEach var="variantOption" items="${product.variantOptions}">
 				<c:forEach items="${variantOption.variantOptionQualifiers}" var="variantOptionQualifier">
 					<c:if test="${variantOptionQualifier.qualifier eq 'rollupProperty'}">
