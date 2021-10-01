@@ -563,4 +563,20 @@
 		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
 	</bean>
 
+	<bean id="dealerDao" class="de.hybris.training.core.dao.impl.DealerDaoImpl">
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+		<property name="modelService" ref="modelService" />
+	</bean>
+
+	<bean id="dealerService" class="de.hybris.training.core.services.DealerService" >
+	</bean>
+
+	<bean id="driverDao" class="de.hybris.training.core.dao.impl.DriverDaoImpl">
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+		<property name="modelService" ref="modelService" />
+	</bean>
+
+	<bean id="driverService" class="de.hybris.training.core.services.DriverService" >
+	</bean>
+
 </beans>

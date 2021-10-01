@@ -189,4 +189,40 @@
 		  parent="variantCommerceSearchResultProductPopulator">
 	</bean>
 
+	<bean id="dealersFacade" class="de.hybris.training.facades.dealers.Impl.DealersFacadeImpl">
+		<property name="dealerService" ref="dealerService"/>
+		<property name="dealerConverter" ref="dealerConverter" />
+	</bean>
+
+	<bean id="dealerConverter" parent="abstractPopulatingConverter" >
+		<property name="targetClass" value="de.hybris.training.facades.product.data.DealerData" />
+		<property name="populators" >
+			<list>
+				<ref bean="dealerDataPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="dealerDataPopulator" class="de.hybris.training.facades.populators.DealerDataPopulator" >
+
+	</bean>
+
+	<bean id="driversFacade" class="de.hybris.training.facades.drivers.Impl.DriversFacadeImpl">
+		<property name="driverService" ref="driverService"/>
+		<property name="driverConverter" ref="driverConverter" />
+	</bean>
+
+	<bean id="driverConverter" parent="abstractPopulatingConverter" >
+		<property name="targetClass" value="de.hybris.training.facades.product.data.DriverData" />
+		<property name="populators" >
+			<list>
+				<ref bean="driverDataPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="driverDataPopulator" class="de.hybris.training.facades.populators.DriverDataPopulator" >
+
+	</bean>
+
 </beans>

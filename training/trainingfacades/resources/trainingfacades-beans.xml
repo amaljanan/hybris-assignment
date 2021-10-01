@@ -19,5 +19,16 @@
 		<property name="registrationNumber" type="String"/>
 		<property name="code" type="String"/>
 	</bean>
+
+	<bean class="de.hybris.training.facades.product.data.DealerData" >
+		<property name="dealerId" type="int" />
+		<property name="dealerName" type="String" />
+	</bean>
+
+	<bean class="de.hybris.training.facades.product.data.DriverData" >
+		<property name="driverId" type="int" />
+		<property name="driverName" type="String" />
+		<property name="experience" type="int" />
+	</bean>
 	
 </beans>
