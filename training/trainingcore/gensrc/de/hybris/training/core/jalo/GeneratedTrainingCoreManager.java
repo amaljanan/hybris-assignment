@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 29-Sep-2021, 10:36:38 AM                    ---
+ * --- Generated at 10-Oct-2021, 5:20:49 PM                     ---
  * ----------------------------------------------------------------
  *  
  * Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
@@ -18,6 +18,8 @@ import de.hybris.platform.jalo.link.Link;
 import de.hybris.platform.jalo.type.ComposedType;
 import de.hybris.platform.jalo.type.JaloGenericCreationException;
 import de.hybris.training.core.constants.TrainingCoreConstants;
+import de.hybris.training.core.jalo.AccessoriesColorVariantProduct;
+import de.hybris.training.core.jalo.AccessoriesVehicleVariantProduct;
 import de.hybris.training.core.jalo.ApparelProduct;
 import de.hybris.training.core.jalo.ApparelSizeVariantProduct;
 import de.hybris.training.core.jalo.ApparelStyleVariantProduct;
@@ -28,6 +30,7 @@ import de.hybris.training.core.jalo.TrainingCatalog;
 import de.hybris.training.core.jalo.TrainingSample;
 import de.hybris.training.core.jalo.TrainingUser;
 import de.hybris.training.core.jalo.Vehicle;
+import de.hybris.training.core.jalo.VehicleAccessories;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,6 +56,58 @@ public abstract class GeneratedTrainingCoreManager extends Extension
 			ret.putAll(attr);
 		}
 		return ret;
+	}
+	
+	public AccessoriesColorVariantProduct createAccessoriesColorVariantProduct(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( TrainingCoreConstants.TC.ACCESSORIESCOLORVARIANTPRODUCT );
+			return (AccessoriesColorVariantProduct)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating AccessoriesColorVariantProduct : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public AccessoriesColorVariantProduct createAccessoriesColorVariantProduct(final Map attributeValues)
+	{
+		return createAccessoriesColorVariantProduct( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public AccessoriesVehicleVariantProduct createAccessoriesVehicleVariantProduct(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( TrainingCoreConstants.TC.ACCESSORIESVEHICLEVARIANTPRODUCT );
+			return (AccessoriesVehicleVariantProduct)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating AccessoriesVehicleVariantProduct : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public AccessoriesVehicleVariantProduct createAccessoriesVehicleVariantProduct(final Map attributeValues)
+	{
+		return createAccessoriesVehicleVariantProduct( getSession().getSessionContext(), attributeValues );
 	}
 	
 	public ApparelProduct createApparelProduct(final SessionContext ctx, final Map attributeValues)
@@ -313,6 +368,32 @@ public abstract class GeneratedTrainingCoreManager extends Extension
 	public Vehicle createVehicle(final Map attributeValues)
 	{
 		return createVehicle( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public VehicleAccessories createVehicleAccessories(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( TrainingCoreConstants.TC.VEHICLEACCESSORIES );
+			return (VehicleAccessories)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating VehicleAccessories : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public VehicleAccessories createVehicleAccessories(final Map attributeValues)
+	{
+		return createVehicleAccessories( getSession().getSessionContext(), attributeValues );
 	}
 	
 	@Override

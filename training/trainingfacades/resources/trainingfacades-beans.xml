@@ -9,6 +9,8 @@
 		<property name="registrationNumber" type="String"/>
 		<property name="dealerName" type="String" />
 		<property name="driverName" type="String" />
+		<property name="supportedVehicle" type="String" />
+		<property name="color" type="String" />
 	</bean>
 
 	<bean class="de.hybris.training.facades.product.data.GenderData">

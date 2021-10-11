@@ -225,4 +225,11 @@
 
 	</bean>
 
+<!-- Vehicle accessories	-->
+	<alias name="vehicleAccessoriesPopulator" alias="commerceSearchResultProductPopulator"/>
+	<bean id="vehicleAccessoriesPopulator"
+		  class="de.hybris.training.facades.populators.VehicleAccessoriesPopulator"
+		  parent="variantCommerceSearchResultProductPopulator">
+	</bean>
+
 </beans>

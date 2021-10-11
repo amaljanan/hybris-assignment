@@ -33,3 +33,22 @@ INSERT_UPDATE Driver; driverId[unique=true,allownull=false];vehicles(registratio
 ;10;KL 10A 6717
 ;11;KL 59P 2288
 ;12;KL 07 007
+
+#Assignment Evaluation
+
+#Vehicle accessories
+INSERT_UPDATE VehicleAccessories;code[unique=true,allownull=false];$catalogVersion;$approved;material;name
+                                ;34000;;;leather;Steering wheel cover
+                                ;34001;;;Polypropylene;Car cover
+                                ;34002;;;Plastic;Foot mat
+                                ;34003;;;Plastic;Mobile Phone holder
+#Vehicle Supported
+INSERT_UPDATE VehicleSupported;vehicleCode[unique=true,allownull=false];model[allownull=false];engineType[allownull=false]
+                              ;01;Ford Figo;petrol
+                              ;02;Hyundai I10;petrol
+                              ;03;Maruti Swift;diesel
+                              ;04;Swift Dzire;petrol
+                              ;05;Polo;diesel
+                              ;06;Swift Dzire;diesel
+                              ;07;Maruti Swift;petrol
+

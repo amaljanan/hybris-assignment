@@ -39,34 +39,35 @@
 				</div>
 			</c:if>
 
-			<ycommerce:testId code="product_registerNumber">
-			                </br>
-            				<a class="name" href="">
-            					<c:out escapeXml="false" value="Reg No: ${product.registrationNumber}" />
-            				</a>
-            </ycommerce:testId>
 
-            <ycommerce:testId code="product_dealerName">
-            			                </br>
-                        				<a class="name" href="">
-                        					<c:out escapeXml="false" value="Dealer Name: ${product.dealerName}" />
-                        				</a>
-             </ycommerce:testId>
-
-             <ycommerce:testId code="product_driverName">
+             <ycommerce:testId code="vehicle_supported">
                      </br>
                      <c:choose>
-                       <c:when test="${empty product.driverName }">
-                         Driver not available
+                       <c:when test="${empty product.supportedVehicle }">
+                         No vehicle is available
                        </c:when>
                        <c:otherwise>
                                <a class="name" href="">
-                                    <c:out escapeXml="false" value="Driver Name: ${product.driverName}" />
+                                    <c:out escapeXml="false" value="Supported Vehicle: </br> ${product.supportedVehicle}" />
                                </a>
                        </c:otherwise>
                      </c:choose>
               </ycommerce:testId>
 
+                <ycommerce:testId code="color_available">
+                                   </br>
+                                   <c:choose>
+                                     <c:when test="${empty product.supportedVehicle }">
+                                       No vehicle is available
+                                     </c:when>
+                                     <c:otherwise>
+                                             <a class="name" href="">
+                                                  <c:out escapeXml="false" value="Available color: " />
+                                             </a>
+                                             </br> ${product.color}
+                                     </c:otherwise>
+                                   </c:choose>
+                   </ycommerce:testId>
 
 			<ycommerce:testId code="product_productPrice">
 				<div class="price"><product:productListerItemPrice product="${product}"/></div>

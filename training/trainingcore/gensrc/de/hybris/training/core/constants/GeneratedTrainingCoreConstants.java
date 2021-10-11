@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 29-Sep-2021, 10:36:38 AM                    ---
+ * --- Generated at 10-Oct-2021, 5:20:49 PM                     ---
  * ----------------------------------------------------------------
  *  
  * Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
@@ -18,17 +18,21 @@ public class GeneratedTrainingCoreConstants
 	public static final String EXTENSIONNAME = "trainingcore";
 	public static class TC
 	{
+		public static final String ACCESSORIESCOLORVARIANTPRODUCT = "AccessoriesColorVariantProduct".intern();
+		public static final String ACCESSORIESVEHICLEVARIANTPRODUCT = "AccessoriesVehicleVariantProduct".intern();
 		public static final String APPARELPRODUCT = "ApparelProduct".intern();
 		public static final String APPARELSIZEVARIANTPRODUCT = "ApparelSizeVariantProduct".intern();
 		public static final String APPARELSTYLEVARIANTPRODUCT = "ApparelStyleVariantProduct".intern();
 		public static final String DEALER = "Dealer".intern();
 		public static final String DRIVER = "Driver".intern();
 		public static final String ELECTRONICSCOLORVARIANTPRODUCT = "ElectronicsColorVariantProduct".intern();
+		public static final String ENGINETYPE = "EngineType".intern();
 		public static final String SWATCHCOLORENUM = "SwatchColorEnum".intern();
 		public static final String TRAININGCATALOG = "TrainingCatalog".intern();
 		public static final String TRAININGSAMPLE = "TrainingSample".intern();
 		public static final String TRAININGUSER = "TrainingUser".intern();
 		public static final String VEHICLE = "Vehicle".intern();
+		public static final String VEHICLEACCESSORIES = "VehicleAccessories".intern();
 	}
 	public static class Attributes
 	{
@@ -36,6 +40,11 @@ public class GeneratedTrainingCoreConstants
 	}
 	public static class Enumerations
 	{
+		public static class EngineType
+		{
+			public static final String PETROL = "PETROL".intern();
+			public static final String DIESEL = "DIESEL".intern();
+		}
 		public static class SwatchColorEnum
 		{
 			public static final String BLACK = "BLACK".intern();

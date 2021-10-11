@@ -551,17 +551,17 @@
 		  parent="abstractJobPerformable">
 	</bean>
 
-	<bean id="vehicleRegistrationNumberProvider" class = "de.hybris.training.core.search.solrfacetsearch.provider.impl.VehicleRegistrationNumberProvider">
-		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
-	</bean>
+<!--	<bean id="vehicleRegistrationNumberProvider" class = "de.hybris.training.core.search.solrfacetsearch.provider.impl.VehicleRegistrationNumberProvider">-->
+<!--		<property name="fieldNameProvider" ref="solrFieldNameProvider" />-->
+<!--	</bean>-->
 
-	<bean id="dealerNameProvider" class = "de.hybris.training.core.search.solrfacetsearch.provider.impl.DealerNameProvider">
-		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
-	</bean>
+<!--	<bean id="dealerNameProvider" class = "de.hybris.training.core.search.solrfacetsearch.provider.impl.DealerNameProvider">-->
+<!--		<property name="fieldNameProvider" ref="solrFieldNameProvider" />-->
+<!--	</bean>-->
 
-	<bean id="driverNameProvider" class = "de.hybris.training.core.search.solrfacetsearch.provider.impl.DriverNameProvider">
-		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
-	</bean>
+<!--	<bean id="driverNameProvider" class = "de.hybris.training.core.search.solrfacetsearch.provider.impl.DriverNameProvider">-->
+<!--		<property name="fieldNameProvider" ref="solrFieldNameProvider" />-->
+<!--	</bean>-->
 
 	<bean id="dealerDao" class="de.hybris.training.core.dao.impl.DealerDaoImpl">
 		<property name="flexibleSearchService" ref="flexibleSearchService"/>
@@ -577,6 +577,15 @@
 	</bean>
 
 	<bean id="driverService" class="de.hybris.training.core.services.DriverService" >
+	</bean>
+
+<!-- Vehicle variant name provider	-->
+	<bean id="supportedVehicleNameProvider" class = "de.hybris.training.core.search.solrfacetsearch.provider.impl.SupportedVehicleNameProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
+	</bean>
+
+	<bean id="accessoriesColorProvider" class = "de.hybris.training.core.search.solrfacetsearch.provider.impl.AccessoriesColorProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
 	</bean>
 
 </beans>
