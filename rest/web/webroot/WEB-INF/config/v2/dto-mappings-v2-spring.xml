@@ -268,5 +268,10 @@
 		<property name="destClass" value="de.hybris.platform.commercewebservicescommons.dto.drivers.DriversDataWSDTO" />
 	</bean>
 
+<!-- Vehicle Accessories	-->
+	<bean id="accessoriesFieldMapper" parent="fieldMapper">
+		<property name="sourceClass" value="de.hybris.training.facades.product.data.VehicleAccessoriesData" />
+		<property name="destClass" value="de.hybris.platform.commercewebservicescommons.dto.vehicleAccessories.VehicleAccessoriesWsDTO" />
+	</bean>
 
 </beans>

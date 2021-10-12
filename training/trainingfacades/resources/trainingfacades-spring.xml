@@ -232,4 +232,22 @@
 		  parent="variantCommerceSearchResultProductPopulator">
 	</bean>
 
+	<bean id="vehicleAccessoriesFacade" class="de.hybris.training.facades.vehicleAccessories.Impl.VehicleAccessoriesFacadeImpl">
+		<property name="vehicleAccessoriesService" ref="vehicleAccessoriesService"/>
+		<property name="accessoriesConverter" ref="accessoriesConverter" />
+	</bean>
+
+	<bean id="accessoriesConverter" parent="abstractPopulatingConverter" >
+		<property name="targetClass" value="de.hybris.training.facades.product.data.VehicleAccessoriesData" />
+		<property name="populators" >
+			<list>
+				<ref bean="accessoriesPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="accessoriesPopulator" class="de.hybris.training.facades.populators.AccessoriesPopulator" >
+
+	</bean>
+
 </beans>

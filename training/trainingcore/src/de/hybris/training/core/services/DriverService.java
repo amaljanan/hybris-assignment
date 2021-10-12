@@ -2,7 +2,6 @@ package de.hybris.training.core.services;
 
 
 import de.hybris.training.core.dao.DriverDao;
-import de.hybris.training.core.model.DealerModel;
 import de.hybris.training.core.model.DriverModel;
 import org.apache.log4j.Logger;
 

@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface DriversFacade {
 
-    public List<DriverData> getDriverDetails();
+     List<DriverData> getDriverDetails();
 }

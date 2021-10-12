@@ -1631,5 +1631,27 @@
         </property>
     </bean>
 
+<!--  Vehicle Accessories  -->
+    <bean parent="fieldSetLevelMapping" id="VehicleAccessoriesWsDTOFieldSetLevelMapping" >
+        <property name="dtoClass" value="de.hybris.platform.commercewebservicescommons.dto.vehicleAccessories.VehicleAccessoriesWsDTO" />
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC" value="code" />
+                <entry key="DEFAULT" value="code, name" />
+                <entry key="FULL" value="code, name, material" />
+            </map>
+        </property>
+    </bean>
+
+    <bean parent="fieldSetLevelMapping" id="DriversDetailsWsDTOFieldSetLevelMapping" >
+        <property name="dtoClass" value="de.hybris.platform.commercewebservicescommons.dto.vehicleAccessories.VehicleAccessoriesDetailsWsDTO" />
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC" value="accessories(BASIC)" />
+                <entry key="DEFAULT" value="accessories(DEFAULT)" />
+                <entry key="FULL" value="accessories(FULL)" />
+            </map>
+        </property>
+    </bean>
 
 </beans>

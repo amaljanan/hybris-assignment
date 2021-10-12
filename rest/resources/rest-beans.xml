@@ -205,6 +205,26 @@
 	<bean class="de.hybris.training.facades.product.data.DriversDataList">
 		<property name="drivers" type="java.util.List&lt;de.hybris.training.facades.product.data.DriverData>" />
 	</bean>
+<!-- Vehicle Accessories -->
 
+	<bean class="de.hybris.platform.commercewebservicescommons.dto.vehicleAccessories.VehicleAccessoriesWsDTO">
+		<property name="code" type="String" >
+			<description> Unique identifier of the accessory </description>
+		</property>
+		<property name="name" type="String" >
+			<description> Name of the Accessory </description>
+		</property>
+		<property name="material" type="String" >
+			<description> Material used to make the product </description>
+		</property>
+	</bean>
+
+	<bean class="de.hybris.platform.commercewebservicescommons.dto.vehicleAccessories.VehicleAccessoriesDetailsWsDTO">
+		<property name="accessories" type="java.util.List&lt;de.hybris.platform.commercewebservicescommons.dto.vehicleAccessories.VehicleAccessoriesWsDTO>" />
+	</bean>
+
+	<bean class="de.hybris.training.facades.product.data.VehicleAccessoriesDataList">
+		<property name="accessories" type="java.util.List&lt;de.hybris.training.facades.product.data.VehicleAccessoriesData>" />
+	</bean>
 
 </beans>

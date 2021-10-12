@@ -588,4 +588,12 @@
 		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
 	</bean>
 
+	<bean id="vehicleAccessoriesDao" class="de.hybris.training.core.dao.impl.VehicleAccessoriesDaoImpl">
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+		<property name="modelService" ref="modelService" />
+	</bean>
+
+	<bean id="vehicleAccessoriesService" class="de.hybris.training.core.services.VehicleAccessoriesService" >
+	</bean>
+
 </beans>

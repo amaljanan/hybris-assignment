@@ -32,5 +32,12 @@
 		<property name="driverName" type="String" />
 		<property name="experience" type="int" />
 	</bean>
+
+	<bean class="de.hybris.training.facades.product.data.VehicleAccessoriesData" >
+		<property name="code" type="String" />
+		<property name="name" type="String" />
+		<property name="material" type="String" />
+	</bean>
+
 	
 </beans>
