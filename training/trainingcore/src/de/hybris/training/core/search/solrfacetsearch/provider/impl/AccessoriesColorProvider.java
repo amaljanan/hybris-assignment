@@ -57,9 +57,8 @@ public class AccessoriesColorProvider implements FieldValueProvider, Serializabl
         String colorAvailable = "";
         final Collection<VariantProductModel> colors = baseProduct.getVariants();
 
-        for (final VariantProductModel color : colors)
-        {
-            if(color instanceof AccessoriesColorVariantProductModel){
+        for (final VariantProductModel color : colors) {
+            if (color instanceof AccessoriesColorVariantProductModel) {
                 colorAvailable = colorAvailable + "," + ((AccessoriesColorVariantProductModel) color).getColor();
             }
         }

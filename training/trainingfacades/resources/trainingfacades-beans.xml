@@ -39,5 +39,11 @@
 		<property name="material" type="String" />
 	</bean>
 
+	<bean class="de.hybris.training.facades.product.data.AccessoriesVehicleVariantData" >
+		<property name="code" type="String" />
+		<property name="name" type="String" />
+		<property name="supportedVehicle" type="String" />
+	</bean>
+
 	
 </beans>

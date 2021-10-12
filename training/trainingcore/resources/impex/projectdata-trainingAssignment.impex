@@ -1,54 +1,83 @@
 # Macros / Replacement Parameter definitions
-$productCatalog=apparelProductCatalog
-$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
-$approved=approvalstatus(code)[default='approved']
+$productCatalog = apparelProductCatalog
+$catalogVersion = catalogversion(catalog(id[default=$productCatalog]), version[default='Staged'])[unique=true, default=$productCatalog:Staged]
+$approved = approvalstatus(code)[default='approved']
 
 # Insert Vehicle
-INSERT_UPDATE Vehicle;code[unique=true];$catalogVersion;$approved;registrationNumber[unique=true]
-;32020;;;KL 10A 6717
-;32021;;;KL 59P 2288
-;32022;;;KL 07 007
+INSERT_UPDATE Vehicle; code[unique = true]; $catalogVersion; $approved; registrationNumber[unique = true]
+                     ; 32020              ;                ;          ; KL 10A 6717
+                     ; 32021              ;                ;          ; KL 59P 2288
+                     ; 32022              ;                ;          ; KL 07 007
 
 # Insert Driver
-INSERT_UPDATE Driver; driverId[unique=true,allownull=false];drivername;experience
-;10;Thor;5
-;11;IronMan;4
-;12;Captain;7
-;15;Hulk;8
+INSERT_UPDATE Driver; driverId[unique = true, allownull = false]; drivername; experience
+                    ; 10                                        ; Thor      ; 5
+                    ; 11                                        ; IronMan   ; 4
+                    ; 12                                        ; Captain   ; 7
+                    ; 15                                        ; Hulk      ; 8
 
 # Insert Dealer
-INSERT_UPDATE Dealer; dealerId[unique=true,allownull=false];dealername
-;10;Vogo
-;11;Zoom
-;12;Bounce
+INSERT_UPDATE Dealer; dealerId[unique = true, allownull = false]; dealername
+                    ; 10                                        ; Vogo
+                    ; 11                                        ; Zoom
+                    ; 12                                        ; Bounce
 
 # Insert Dealer To Driver and Dealer to Vehicle Relation
-INSERT_UPDATE Dealer; dealerId[unique=true,allownull=false];drivers(driverId);vehicles(registrationNumber)
-;10;10;KL 10A 6717
-;11;11;KL 59P 2288
-;12;12;KL 07 007
+INSERT_UPDATE Dealer; dealerId[unique = true, allownull = false]; drivers(driverId); vehicles(registrationNumber)
+                    ; 10                                        ; 10               ; KL 10A 6717
+                    ; 11                                        ; 11               ; KL 59P 2288
+                    ; 12                                        ; 12               ; KL 07 007
 
 # Insert Driver To Vehicle Relation
-INSERT_UPDATE Driver; driverId[unique=true,allownull=false];vehicles(registrationNumber)
-;10;KL 10A 6717
-;11;KL 59P 2288
-;12;KL 07 007
+INSERT_UPDATE Driver; driverId[unique = true, allownull = false]; vehicles(registrationNumber)
+                    ; 10                                        ; KL 10A 6717
+                    ; 11                                        ; KL 59P 2288
+                    ; 12                                        ; KL 07 007
 
 #Assignment Evaluation
 
 #Vehicle accessories
-INSERT_UPDATE VehicleAccessories;code[unique=true,allownull=false];$catalogVersion;$approved;material;name
-                                ;34000;;;leather;Steering wheel cover
-                                ;34001;;;Polypropylene;Car cover
-                                ;34002;;;Plastic;Foot mat
-                                ;34003;;;Plastic;Mobile Phone holder
-#Vehicle Supported
-INSERT_UPDATE VehicleSupported;vehicleCode[unique=true,allownull=false];model[allownull=false];engineType[allownull=false]
-                              ;01;Ford Figo;petrol
-                              ;02;Hyundai I10;petrol
-                              ;03;Maruti Swift;diesel
-                              ;04;Swift Dzire;petrol
-                              ;05;Polo;diesel
-                              ;06;Swift Dzire;diesel
-                              ;07;Maruti Swift;petrol
+INSERT_UPDATE VehicleAccessories; code[unique = true]; $catalogVersion; $approved; material      ; name                 ; variantType(code)
+                                ; 34000              ;                ;          ; leather       ; Steering wheel cover ; AccessoriesVehicleVariantProduct
+                                ; 34001              ;                ;          ; Polypropylene ; Car cover            ; AccessoriesVehicleVariantProduct
+                                ; 34002              ;                ;          ; Plastic       ; Foot mat             ; AccessoriesVehicleVariantProduct
+                                ; 34003              ;                ;          ; Plastic       ; Mobile Phone holder  ; AccessoriesColorVariantProduct
 
+#Vehicle variant
+INSERT_UPDATE AccessoriesVehicleVariantProduct; code[unique = true, allownull = false]; $catalogVersion; $approved; name                 ; baseProduct(code); supportedVehicle    ; variantType(code)
+                                              ; 34000_swift_p                         ;                ;          ; Steering wheel cover ; 34000            ; Maruti Swift PETROL ; AccessoriesColorVariantProduct
+                                              ; 34000_swift_d                         ;                ;          ; Steering wheel cover ; 34000            ; Maruti Swift DIESEL ; AccessoriesColorVariantProduct
+                                              ; 34000_i10_p                           ;                ;          ; Steering wheel cover ; 34000            ; Hyundai I10 PETROL  ; AccessoriesColorVariantProduct
+
+                                              ; 34001_figo_p                          ;                ;          ; Car cover            ; 34001            ; Ford Figo PETROL    ; AccessoriesColorVariantProduct
+                                              ; 34001_dzire_d                         ;                ;          ; Car cover            ; 34001            ; Swift Dzire DIESEL  ; AccessoriesColorVariantProduct
+                                              ; 34001_polo_p                          ;                ;          ; Car cover            ; 34001            ; Polo PETROL         ; AccessoriesColorVariantProduct
+
+                                              ; 34002_polo_p                          ;                ;          ; Foot mat             ; 34002            ; Polo PETROL         ; AccessoriesColorVariantProduct
+                                              ; 34002_swift_p                         ;                ;          ; Foot mat             ; 34002            ; Maruti Swift PETROL ; AccessoriesColorVariantProduct
+
+#Color variant
+INSERT_UPDATE AccessoriesColorVariantProduct; code[unique = true, allownull = false]; $catalogVersion; $approved; name                 ; color  ; baseProduct(code)
+                                            ; 34000_swift_p_b                       ;                ;          ; Steering wheel cover ; black  ; 34000_swift_p
+                                            ; 34000_swift_p_r                       ;                ;          ; Steering wheel cover ; Red    ; 34000_swift_p
+
+                                            ; 34000_swift_d_r                       ;                ;          ; Steering wheel cover ; Red    ; 34000_swift_d
+
+                                            ; 34000_i10_p_r                         ;                ;          ; Steering wheel cover ; Red    ; 34000_i10_p
+                                            ; 34000_i10_p_g                         ;                ;          ; Steering wheel cover ; Green  ; 34000_i10_p
+
+                                            ; 34001_figo_p_s                        ;                ;          ; Car cover            ; Silver ; 34001_figo_p
+                                            ; 34001_figo_p_b                        ;                ;          ; Car cover            ; Black  ; 34001_figo_p
+
+                                            ; 34001_dzire_d_s                       ;                ;          ; Car cover            ; Silver ; 34001_dzire_d
+
+                                            ; 34001_polo_p_s                        ;                ;          ; Car cover            ; Silver ; 34001_polo_p
+
+                                            ; 34002_polo_p_b                        ;                ;          ; Foot mat             ; Black  ; 34002_polo_p
+                                            ; 34002_polo_p_g                        ;                ;          ; Foot mat             ; Grey   ; 34002_polo_p
+
+                                            ; 34002_swift_p_b                       ;                ;          ; Foot mat             ; Black  ; 34002_swift_p
+
+                                            ; 34003_b                               ;                ;          ; Mobile Phone holder  ; Black  ; 34003
+                                            ; 34003_r                               ;                ;          ; Mobile Phone holder  ; Red    ; 34003
+                                            ; 34003_g                               ;                ;          ; Mobile Phone holder  ; Green  ; 34003

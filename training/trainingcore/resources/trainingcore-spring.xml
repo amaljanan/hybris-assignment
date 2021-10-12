@@ -596,4 +596,11 @@
 	<bean id="vehicleAccessoriesService" class="de.hybris.training.core.services.VehicleAccessoriesService" >
 	</bean>
 
+	<bean id="vehicleVariantDao" class="de.hybris.training.core.dao.impl.VehicleVariantDaoImpl">
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+		<property name="modelService" ref="modelService" />
+	</bean>
+
+	<bean id="vehicleVariantService" class="de.hybris.training.core.services.VehicleVariantService" >
+	</bean>
 </beans>

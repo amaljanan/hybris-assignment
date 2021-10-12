@@ -4,14 +4,11 @@ import de.hybris.platform.commercefacades.product.data.ProductData;
 import de.hybris.platform.commercefacades.search.converters.populator.SearchResultVariantProductPopulator;
 import de.hybris.platform.commerceservices.search.resultdata.SearchResultValueData;
 
-public class VehicleAccessoriesPopulator  extends SearchResultVariantProductPopulator {
-
+public class VehicleAccessoriesPopulator extends SearchResultVariantProductPopulator {
     @Override
-    public void populate(SearchResultValueData source, ProductData target){
-
+    public void populate(SearchResultValueData source, ProductData target) {
         super.populate(source, target);
-        target.setSupportedVehicle(this.<String> getValue(source, "supportedVehicle"));
-        target.setColor(this.<String> getValue(source, "color"));
-
+        target.setSupportedVehicle(this.<String>getValue(source, "supportedVehicle"));
+        target.setColor(this.<String>getValue(source, "color"));
     }
 }
