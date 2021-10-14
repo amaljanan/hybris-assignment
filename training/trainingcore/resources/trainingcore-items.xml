@@ -62,27 +62,6 @@
                 <modifiers read="true" write="true" search="true" optional="true" partof="true"/>
             </targetElement>
         </relation>
-<!-- Accessories to Vehicle Relation -->
-<!--        <relation code="AccessoriesToVehicles" generate="true" localized="false" autocreate="true">-->
-<!--            <deployment table="AccessoriesToVehicles" typecode="12001"/>-->
-<!--            <sourceElement type="VehicleAccessories" cardinality="many" qualifier="vehicleAccessories" ordered="false">-->
-<!--                <modifiers read="true" write="true" search="true" optional="true" />-->
-<!--            </sourceElement>-->
-<!--            <targetElement type="VehicleSupported" cardinality="many" qualifier="vehicleSupported" collectiontype="set" >-->
-<!--                <modifiers read="true" write="true" search="true" optional="true" />-->
-<!--            </targetElement>-->
-<!--        </relation>-->
-
-
-<!--        <relation code="VariantToVehicle" generate="true" localized="false" autocreate="true">-->
-<!--            <deployment table="VariantToVehicle" typecode="11102"/>-->
-<!--            <sourceElement type="AccessoriesColorVariantProduct" cardinality="many" qualifier="accessoriesColorVariantProduct" ordered="false">-->
-<!--                <modifiers read="true" write="true" search="true" optional="true" />-->
-<!--            </sourceElement>-->
-<!--            <targetElement type="VehicleSupported" cardinality="many" qualifier="vehicleSupported" collectiontype="set" >-->
-<!--                <modifiers read="true" write="true" search="true" optional="true" />-->
-<!--            </targetElement>-->
-<!--        </relation>-->
 
     </relations>
 
@@ -158,14 +137,6 @@
                         <modifiers/>
                         <persistence type="property"/>
                     </attribute>
-
-<!--                    <attribute qualifier="engineType" type="EngineType">-->
-<!--                        <description>Engine type variants.-->
-<!--                        </description>-->
-<!--                        <modifiers/>-->
-<!--                        <persistence type="property"/>-->
-<!--                    </attribute>-->
-
                 </attributes>
 
             </itemtype>
@@ -193,41 +164,6 @@
                     </attribute>
                 </attributes>
             </itemtype>
-<!-- Supported Vehicles data model -->
-<!--            <itemtype code="SupportedVehicles" autocreate="true" generate="true">-->
-<!--                <deployment table="SupportedVehicles" typecode="12000" />-->
-<!--                <attributes>-->
-<!--                    <attribute qualifier="vehicleModel" type="java.lang.String" generate="true" >-->
-<!--                        <modifiers read="true" write="true" optional="false" initial="true" />-->
-<!--                        <persistence type="property" />-->
-<!--                    </attribute>-->
-<!--                    <attribute qualifier="engineType" type="EngineType" generate="true" >-->
-<!--                        <modifiers read="true" write="true" optional="false" initial="true" />-->
-<!--                        <persistence type="property" />-->
-<!--                    </attribute>-->
-<!--                </attributes>-->
-<!--            </itemtype>-->
-
-<!--            <itemtype code="VehicleSupported" autocreate="true" generate="true">-->
-<!--                <deployment table="VehicleSupported" typecode="11100" />-->
-<!--                <attributes>-->
-<!--                    <attribute qualifier="vehicleCode" type="java.lang.Integer" generate="true" >-->
-<!--                        <modifiers read="true" write="true" optional="false" unique="true" initial="true"/>-->
-<!--                        <persistence type="property" />-->
-<!--                    </attribute>-->
-<!--                    <attribute qualifier="model" type="localized:java.lang.String" generate="true" >-->
-<!--                        <modifiers read="true" write="true" optional="false" initial="true"/>-->
-<!--                        <persistence type="property" />-->
-<!--                    </attribute>-->
-<!--                    <attribute qualifier="engineType" type="localized:java.lang.String" generate="true">-->
-<!--                        <modifiers read="true" write="true" optional="false" initial="true" />-->
-<!--                        <persistence type="property" />-->
-<!--                    </attribute>-->
-<!--                </attributes>-->
-<!--            </itemtype>-->
-
-
-
         </typegroup>
 
 

@@ -583,11 +583,12 @@
 	<bean id="supportedVehicleNameProvider" class = "de.hybris.training.core.search.solrfacetsearch.provider.impl.SupportedVehicleNameProvider">
 		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
 	</bean>
-
+<!-- Accessories color provider	-->
 	<bean id="accessoriesColorProvider" class = "de.hybris.training.core.search.solrfacetsearch.provider.impl.AccessoriesColorProvider">
 		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
 	</bean>
 
+<!-- Vehicle Accessories	-->
 	<bean id="vehicleAccessoriesDao" class="de.hybris.training.core.dao.impl.VehicleAccessoriesDaoImpl">
 		<property name="flexibleSearchService" ref="flexibleSearchService"/>
 		<property name="modelService" ref="modelService" />
@@ -595,7 +596,7 @@
 
 	<bean id="vehicleAccessoriesService" class="de.hybris.training.core.services.VehicleAccessoriesService" >
 	</bean>
-
+<!-- Vehicle variant accessories -->
 	<bean id="vehicleVariantDao" class="de.hybris.training.core.dao.impl.VehicleVariantDaoImpl">
 		<property name="flexibleSearchService" ref="flexibleSearchService"/>
 		<property name="modelService" ref="modelService" />

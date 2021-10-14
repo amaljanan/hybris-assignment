@@ -64,6 +64,7 @@
                     <editorArea:attribute qualifier="code" />
                     <editorArea:attribute qualifier="approvalStatus" />
                     <editorArea:attribute qualifier="name" />
+					<editorArea:attribute qualifier="material" />
                 </editorArea:essentialSection >
             </editorArea:essentials>
 			<editorArea:tab name="hmc.tab.accessories.essential"
@@ -169,11 +170,6 @@
 		</editorArea:editorArea>
 	</context>
 
-	<context type="AccessoriesColorVariantProduct" component="editorAreaDynamicForms" merge-by="module">
-		<df:dynamicForms xmlns:df="http://www.hybris.com/cockpitng/component/dynamicForms">
-			<df:attribute id="accessories.dynamic" qualifier="description" triggeredOn="name" computedValue="'Perfect ' + name[new java.util.Locale('en')] + ' for your car '"/>
-		</df:dynamicForms>
-	</context>
 
 	<context type="AccessoriesColorVariantProduct" component="base" merge-by="type" parent="GenericItem">
 		<y:base>
@@ -264,11 +260,6 @@
 		</editorArea:editorArea>
 	</context>
 
-	<context type="AccessoriesVehicleVariantProduct" component="editorAreaDynamicForms" merge-by="module">
-		<df:dynamicForms xmlns:df="http://www.hybris.com/cockpitng/component/dynamicForms">
-			<df:attribute id="vehiclevariant.dynamic" qualifier="description" triggeredOn="name" computedValue="'Perfect ' + name[new java.util.Locale('en')] + ' for your car ' + 'supportedVehicle' "/>
-		</df:dynamicForms>
-	</context>
 
 	<context type="AccessoriesVehicleVariantProduct" component="base" merge-by="type" parent="GenericItem">
 		<y:base>
@@ -289,7 +280,7 @@
 	<context merge-by="type" parent="GenericItem" type="AccessoriesVehicleVariantProduct" component="advanced-search">
 		<advanced-search:advanced-search>
 			<advanced-search:field-list>
-				<advanced-search:field name="supportedVehicle" selected="true" operator="like" />
+				<advanced-search:field name="supportedVehicle" selected="true" operator="equals" />
 				<advanced-search:field name="name" selected="true" operator="equals" />
 				<advanced-search:field name="code" selected="true" operator="equals" />
 			</advanced-search:field-list>
